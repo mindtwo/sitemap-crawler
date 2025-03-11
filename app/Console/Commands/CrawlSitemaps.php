@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Jobs\CrawlSitemap;
-use App\Services\Crawler;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
@@ -28,7 +27,7 @@ class CrawlSitemaps extends Command
     /**
      * Execute the console command.
      */
-    public function handle(Crawler $crawler): int
+    public function handle(): int
     {
         $urls = config('site.sitemaps');
         $url = $this->argument('url');

@@ -6,6 +6,7 @@ use App\Enums\LocationStatus;
 use App\Models\Domain;
 use App\Models\Location;
 use Chiiya\Common\Repositories\AbstractRepository;
+use Chiiya\Common\Repositories\HasBulkInserts;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class LocationRepository extends AbstractRepository
 {
+    use HasBulkInserts;
     protected string $model = Location::class;
 
     public function resetLocationsForDomain(Domain $domain): void
@@ -39,5 +41,26 @@ class LocationRepository extends AbstractRepository
     protected function applyFilters(Builder $builder, array $parameters): Builder
     {
         return $builder;
+    }
+
+    protected function bulkInsertColumns(): array
+    {
+        return [
+            'domain_id',
+            'checksum',
+            'location',
+            'last_modified_at',
+            'change_frequency',
+            'priority',
+            'status',
+            'created_at',
+            'updated_at',
+            'deleted_at',
+        ];
+    }
+
+    protected function bulkInsertUpdatedColumns(): array
+    {
+        return ['last_modified_at', 'change_frequency', 'priority', 'status', 'updated_at', 'deleted_at'];
     }
 }

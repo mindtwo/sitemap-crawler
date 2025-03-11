@@ -2,6 +2,7 @@
 
 namespace App\Parsers;
 
+use App\Exceptions\ParsingException;
 use SimpleXMLElement;
 
 class SitemapLocationParser extends Parser
@@ -16,9 +17,15 @@ class SitemapLocationParser extends Parser
 
     /**
      * {@inheritDoc}
+     *
+     * @throws ParsingException
      */
     protected function processItem(SimpleXMLElement $element): array|string
     {
+        if (! isset($element->loc)) {
+            throw new ParsingException('Missing required "loc" element in sitemap.');
+        }
+
         return [
             'loc' => (string) $element->loc,
             'lastmod' => (string) $element->lastmod,

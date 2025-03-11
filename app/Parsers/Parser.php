@@ -2,7 +2,7 @@
 
 namespace App\Parsers;
 
-use App\Exceptions\CrawlingException;
+use App\Exceptions\ParsingException;
 use SimpleXMLElement;
 use XMLReader;
 
@@ -11,14 +11,14 @@ abstract class Parser
     /**
      * Parse items from a sitemap file.
      *
-     * @throws CrawlingException
+     * @throws ParsingException
      */
     public function parse(string $path): array
     {
         $xml = XMLReader::open($path);
 
         if ($xml === false) {
-            throw new CrawlingException('Could not open sitemap file: '.$path);
+            throw new ParsingException('Could not open sitemap file: '.$path);
         }
 
         $items = [];
@@ -35,7 +35,7 @@ abstract class Parser
             $item = simplexml_load_string($xml->readOuterXml());
 
             if ($item === false) {
-                throw new CrawlingException('Could not parse sitemap item: '.$path);
+                throw new ParsingException('Could not parse sitemap item: '.$path);
             }
 
             $items[] = $this->processItem($item);

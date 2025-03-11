@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Exceptions\CrawlingException;
 use App\Services\Crawler;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -17,8 +16,6 @@ class CrawlSitemap implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @throws CrawlingException
      */
     public function handle(Crawler $crawler): void
     {

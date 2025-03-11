@@ -5,4 +5,5 @@ return [
     'admin_password' => env('ADMIN_DEFAULT_PASSWORD'),
 
     'sitemaps' => ['https://www.mindtwo.de/sitemap.xml'],
+    'user_agent' => 'mindtwo-sitemap-crawler/1.0',
 ];

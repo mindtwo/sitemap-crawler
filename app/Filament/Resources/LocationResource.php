@@ -29,7 +29,8 @@ class LocationResource extends Resource
                     ->label(__('Location'))
                     ->icon('heroicon-o-link')
                     ->url(fn (Location $record) => $record->location)
-                    ->wrap(),
+                    ->wrap()
+                    ->searchable(),
                 TextColumn::make('domain.domain')
                     ->label(__('Domain')),
                 TextColumn::make('created_at')

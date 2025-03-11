@@ -2,10 +2,12 @@
 
 namespace App\Models\DTOs;
 
+use Psr\Http\Message\UriInterface;
+
 class Sitemap
 {
     public function __construct(
-        public string $url,
+        public UriInterface $uri,
         public string $path,
     ) {}
 }
