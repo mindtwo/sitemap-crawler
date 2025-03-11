@@ -27,6 +27,10 @@
 <pre>
 <a href="#installation"
 >> Installation ..................................................................... </a>
+<a href="#usage"
+>> Usage ............................................................................ </a>
+<a href="#bruno"
+>> Bruno ............................................................................ </a>
 <a href="#linting"
 >> Linting .......................................................................... </a>
 </pre>
@@ -51,6 +55,10 @@ To crawl a sitemap, run the following command:
 ```bash
 ddev artisan sitemap:crawl https://example.com/sitemap.xml
 ```
+
+## Bruno
+
+A [Bruno](https://www.usebruno.com/) collection may be found under `documentation/bruno`.
 
 ## Linting
 
