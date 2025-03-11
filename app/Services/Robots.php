@@ -15,7 +15,7 @@ class Robots
     public function isAllowed(UriInterface $uri): bool
     {
         if (! isset($this->cache[$uri->getHost()])) {
-            $this->cache[$uri->getHost()] = RobotsTxt::create($uri->withPath('/robots.txt'));
+            $this->cache[$uri->getHost()] = RobotsTxt::create((string) $uri->withPath('/robots.txt'));
         }
 
         return $this->cache[$uri->getHost()]->allows((string) $uri, config('site.user_agent'));

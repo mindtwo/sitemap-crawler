@@ -179,7 +179,7 @@ readonly class Crawler
             'checksum' => $checksum,
             'location' => $uri['loc'],
             'last_modified_at' => $uri['lastmod']
-                ? Carbon::parse($uri['lastmod'])->tz(config('app.timezone'))->toDateTimeString()
+                ? Carbon::parse($uri['lastmod'])->setTimezone(config('app.timezone'))->toDateTimeString()
                 : null,
             'change_frequency' => $uri['changefreq']
                 ? ChangeFrequency::from($uri['changefreq'])->value
