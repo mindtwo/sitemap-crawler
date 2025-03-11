@@ -1,0 +1,16 @@
+includes:
+  - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+  paths:
+    - app
+    - config
+  excludePaths:
+    - %rootDir%/../../../*/node_modules/*
+  level: 8
+  ignoreErrors:
+    - '#Parameter \#2 \$string of function explode expects string, bool\|string given\.#'
+    - '#Parameter \#1 \$url of function parse_url expects string, bool\|string given\.#'
+    - '#Parameter \#1 \$title of static method Illuminate\\Support\\Str::slug\(\) expects string, bool\|string given\.#'
+    -
+      identifier: missingType.iterableValue
